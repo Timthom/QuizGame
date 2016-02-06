@@ -13,6 +13,8 @@
 		7F66207C1C626F4D00F0C460 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7F66207A1C626F4D00F0C460 /* Main.storyboard */; };
 		7F66207E1C626F4D00F0C460 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7F66207D1C626F4D00F0C460 /* Assets.xcassets */; };
 		7F6620811C626F4D00F0C460 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7F66207F1C626F4D00F0C460 /* LaunchScreen.storyboard */; };
+		7F66208D1C637BB300F0C460 /* QuizGameRandomGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F66208C1C637BB300F0C460 /* QuizGameRandomGenerator.m */; };
+		7F6620931C63C52300F0C460 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F6620921C63C52300F0C460 /* Foundation.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +28,9 @@
 		7F66207D1C626F4D00F0C460 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7F6620801C626F4D00F0C460 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7F6620821C626F4D00F0C460 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7F66208B1C637BB300F0C460 /* QuizGameRandomGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuizGameRandomGenerator.h; sourceTree = "<group>"; };
+		7F66208C1C637BB300F0C460 /* QuizGameRandomGenerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuizGameRandomGenerator.m; sourceTree = "<group>"; };
+		7F6620921C63C52300F0C460 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -33,6 +38,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7F6620931C63C52300F0C460 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -58,6 +64,8 @@
 		7F6620701C626F4D00F0C460 /* Labb2 */ = {
 			isa = PBXGroup;
 			children = (
+				7F6620941C63C52700F0C460 /* Librarys */,
+				7F66208E1C637BBE00F0C460 /* Model */,
 				7F6620741C626F4D00F0C460 /* AppDelegate.h */,
 				7F6620751C626F4D00F0C460 /* AppDelegate.m */,
 				7F6620771C626F4D00F0C460 /* ViewController.h */,
@@ -77,6 +85,24 @@
 				7F6620721C626F4D00F0C460 /* main.m */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		7F66208E1C637BBE00F0C460 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				7F66208B1C637BB300F0C460 /* QuizGameRandomGenerator.h */,
+				7F66208C1C637BB300F0C460 /* QuizGameRandomGenerator.m */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		7F6620941C63C52700F0C460 /* Librarys */ = {
+			isa = PBXGroup;
+			children = (
+				7F6620921C63C52300F0C460 /* Foundation.framework */,
+			);
+			name = Librarys;
+			path = ..;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -110,6 +136,7 @@
 				TargetAttributes = {
 					7F66206D1C626F4D00F0C460 = {
 						CreatedOnToolsVersion = 7.2;
+						DevelopmentTeam = RQ995R5XYN;
 					};
 				};
 			};
@@ -152,6 +179,7 @@
 				7F6620791C626F4D00F0C460 /* ViewController.m in Sources */,
 				7F6620761C626F4D00F0C460 /* AppDelegate.m in Sources */,
 				7F6620731C626F4D00F0C460 /* main.m in Sources */,
+				7F66208D1C637BB300F0C460 /* QuizGameRandomGenerator.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -261,10 +289,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = Labb2/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = TTM.Labb2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -272,10 +303,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = Labb2/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = TTM.Labb2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};
@@ -298,6 +332,7 @@
 				7F6620871C626F4D00F0C460 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
