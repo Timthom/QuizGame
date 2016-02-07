@@ -27,6 +27,10 @@
 @property (weak, nonatomic) IBOutlet UILabel *answerLabelD;
 @property (weak, nonatomic) IBOutlet UIButton *nextQuestionButtom;
 @property (weak, nonatomic) IBOutlet UIButton *answerButtomA;
+@property (weak, nonatomic) IBOutlet UIButton *startGameButtom;
+@property (weak, nonatomic) IBOutlet UILabel *scoreLabel;
+
+@property (nonatomic) int scoreCount;
 
 @end
 
@@ -41,7 +45,7 @@
 }
 
 - (void)viewDidLoad {
-    [[self nextQuestionButtom] setTitle:@"Touch to begin" forState:UIControlStateNormal];
+    _nextQuestionButtom.hidden = YES;
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
 }
@@ -50,36 +54,59 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-- (IBAction)startGameButtom:(id)sender {
-     NSLog(@"Buttom changed");
-    
+
+
+//Set question and answers to UI
+-(void)updateUI {
     self.questionTextField.text = [self.quizGameGenerator generateQuestion];
-    
     self.answerLabelA.text = [self.quizGameGenerator generateAnswer1];
     self.answerLabelB.text = [self.quizGameGenerator generateAnswer2];
     self.answerLabelC.text = [self.quizGameGenerator generateAnswer3];
     self.answerLabelD.text = [self.quizGameGenerator generateAnswer4];
+}
+
+-(void)checkRightAnswer {
     
-   // _nextQuestionButtom.hidden = YES;
-    [self.nextQuestionButtom  setTitle:@"Next question" forState:UIControlStateNormal];
+    
+}
+
+-(void)setScoreCount:(int)scoreCount
+{
+    _scoreCount = scoreCount;
+    self.scoreLabel.text = [NSString stringWithFormat:@"Score: %d", self.scoreCount];
+}
+
+- (IBAction)startGameButtom:(id)sender {
+     NSLog(@"Buttom changed");
+    
+    [self updateUI];
+    
+    _nextQuestionButtom.hidden = NO;
+    [self.startGameButtom  setTitle:@"Next question" forState:UIControlStateNormal];
 
     NSLog(@"%@", self.questionTextField.text);
+}
+- (IBAction)nextQuestionButtom:(id)sender {
+    [self updateUI];
+
 }
 
 - (IBAction)answerButtomA:(id)sender {
     [self.answerButtomA setTitle: [self.quizGameGenerator generateAnswer1] forState: UIControlStateNormal];
+    [self.answerLabelA setBackgroundColor:[UIColor redColor]];
 }
 
 - (IBAction)answerButtomB:(id)sender {
-    
+    [self.answerButtomA setTitle: [self.quizGameGenerator generateAnswer2] forState: UIControlStateNormal];
+    [self.answerLabelB setBackgroundColor:[UIColor greenColor]];
 }
 
 - (IBAction)answerButtomC:(id)sender {
-   
+   [self.answerButtomA setTitle: [self.quizGameGenerator generateAnswer3] forState: UIControlStateNormal];
 }
 
 - (IBAction)answerButtomD:(id)sender {
-    
+    [self.answerButtomA setTitle: [self.quizGameGenerator generateAnswer4] forState: UIControlStateNormal];
 }
 
 @end
