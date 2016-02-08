@@ -25,12 +25,18 @@
 @property (weak, nonatomic) IBOutlet UILabel *answerLabelB;
 @property (weak, nonatomic) IBOutlet UILabel *answerLabelC;
 @property (weak, nonatomic) IBOutlet UILabel *answerLabelD;
-@property (weak, nonatomic) IBOutlet UIButton *nextQuestionButtom;
-@property (weak, nonatomic) IBOutlet UIButton *answerButtomA;
+@property (weak, nonatomic) IBOutlet UILabel *rightAnswerLabel;
+
 @property (weak, nonatomic) IBOutlet UIButton *startGameButtom;
 @property (weak, nonatomic) IBOutlet UILabel *scoreLabel;
+@property (weak, nonatomic) IBOutlet UIButton *resetGameButtom;
+@property (weak, nonatomic) IBOutlet UIButton *answerButtomA;
+@property (weak, nonatomic) IBOutlet UIButton *answerButtomB;
+@property (weak, nonatomic) IBOutlet UIButton *answerButtomC;
+@property (weak, nonatomic) IBOutlet UIButton *answerButtomD;
 
 @property (nonatomic) int scoreCount;
+@property (nonatomic) int questionCount;
 
 @end
 
@@ -45,7 +51,8 @@
 }
 
 - (void)viewDidLoad {
-    _nextQuestionButtom.hidden = YES;
+    _resetGameButtom.hidden = YES;
+    _rightAnswerLabel.hidden = YES;
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
 }
@@ -63,11 +70,24 @@
     self.answerLabelB.text = [self.quizGameGenerator generateAnswer2];
     self.answerLabelC.text = [self.quizGameGenerator generateAnswer3];
     self.answerLabelD.text = [self.quizGameGenerator generateAnswer4];
+    self.rightAnswerLabel.text = [self.quizGameGenerator generateRightAnswer];
 }
 
 -(void)checkRightAnswer {
-    
-    
+   
+ /*if([self.answerLabelA.text isEqualToString: self.rightAnswerLabel.text ]  )
+ {
+ self.scoreCount++;
+ _rightAnswerLabel.hidden = NO;
+ self.rightAnswerLabel.text = [self.quizGameGenerator generateRightAnswer];
+ [self.rightAnswerLabel setBackgroundColor:[UIColor greenColor]];
+ 
+ } else {
+ _rightAnswerLabel.hidden = NO;
+ self.rightAnswerLabel.text = [NSString stringWithFormat:@"Wrong answer!"];
+ [self.rightAnswerLabel setBackgroundColor:[UIColor redColor]];
+ }*/
+ 
 }
 
 -(void)setScoreCount:(int)scoreCount
@@ -76,37 +96,126 @@
     self.scoreLabel.text = [NSString stringWithFormat:@"Score: %d", self.scoreCount];
 }
 
+-(void)setQuestionCount:(int)questionCount {
+    _questionCount = questionCount;
+    if(_questionCount == 5) {
+        _startGameButtom.hidden = YES;
+        _resetGameButtom.hidden = NO;
+        [_answerButtomA  setEnabled:NO];
+        [_answerButtomB  setEnabled:NO];
+        [_answerButtomC  setEnabled:NO];
+        [_answerButtomD  setEnabled:NO];
+
+    }
+   
+}
+
 - (IBAction)startGameButtom:(id)sender {
-     NSLog(@"Buttom changed");
-    
     [self updateUI];
     
-    _nextQuestionButtom.hidden = NO;
+    _rightAnswerLabel.hidden = YES;
+   
     [self.startGameButtom  setTitle:@"Next question" forState:UIControlStateNormal];
-
+    
+    
+    
     NSLog(@"%@", self.questionTextField.text);
+    NSLog(@"%@", self.rightAnswerLabel.text);
+    
+    
 }
-- (IBAction)nextQuestionButtom:(id)sender {
-    [self updateUI];
 
-}
 
 - (IBAction)answerButtomA:(id)sender {
-    [self.answerButtomA setTitle: [self.quizGameGenerator generateAnswer1] forState: UIControlStateNormal];
-    [self.answerLabelA setBackgroundColor:[UIColor redColor]];
+   // [self.answerButtomA setTitle: [self.quizGameGenerator generateAnswer1] forState: UIControlStateNormal];
+    //[self checkRightAnswer];
+   self.questionCount++;
+    if([self.answerLabelA.text  isEqualToString: self.rightAnswerLabel.text ] ) {
+        self.scoreCount++;
+        _rightAnswerLabel.hidden = NO;
+        self.rightAnswerLabel.text = [self.quizGameGenerator generateRightAnswer];
+        [self.rightAnswerLabel setBackgroundColor:[UIColor greenColor]];
+        
+    } else {
+        _rightAnswerLabel.hidden = NO;
+        self.rightAnswerLabel.text = [NSString stringWithFormat:@"Wrong answer!"];
+        [self.rightAnswerLabel setBackgroundColor:[UIColor redColor]];
+    }
 }
 
 - (IBAction)answerButtomB:(id)sender {
-    [self.answerButtomA setTitle: [self.quizGameGenerator generateAnswer2] forState: UIControlStateNormal];
-    [self.answerLabelB setBackgroundColor:[UIColor greenColor]];
+   // [self.answerButtomB setTitle: [self.quizGameGenerator generateAnswer2] forState: UIControlStateNormal];
+   // [self checkRightAnswer];
+   self.questionCount++;
+   if([self.answerLabelB.text  isEqualToString: self.rightAnswerLabel.text ] ) {
+        self.scoreCount++;
+        _rightAnswerLabel.hidden = NO;
+        self.rightAnswerLabel.text = [self.quizGameGenerator generateRightAnswer];
+        [self.rightAnswerLabel setBackgroundColor:[UIColor greenColor]];
+        
+    } else {
+        _rightAnswerLabel.hidden = NO;
+        self.rightAnswerLabel.text = [NSString stringWithFormat:@"Wrong answer!"];
+        [self.rightAnswerLabel setBackgroundColor:[UIColor redColor]];
+    }
+
+    
 }
 
 - (IBAction)answerButtomC:(id)sender {
-   [self.answerButtomA setTitle: [self.quizGameGenerator generateAnswer3] forState: UIControlStateNormal];
+  //[self.answerButtomC setTitle: [self.quizGameGenerator generateAnswer3] forState: UIControlStateNormal];
+  //[self checkRightAnswer];
+    self.questionCount++;
+    if([self.answerLabelC.text  isEqualToString: self.rightAnswerLabel.text ] ) {
+        self.scoreCount++;
+        _rightAnswerLabel.hidden = NO;
+        self.rightAnswerLabel.text = [self.quizGameGenerator generateRightAnswer];
+        [self.rightAnswerLabel setBackgroundColor:[UIColor greenColor]];
+        
+    } else {
+        _rightAnswerLabel.hidden = NO;
+        self.rightAnswerLabel.text = [NSString stringWithFormat:@"Wrong answer!"];
+        [self.rightAnswerLabel setBackgroundColor:[UIColor redColor]];
+    }
+
 }
 
 - (IBAction)answerButtomD:(id)sender {
-    [self.answerButtomA setTitle: [self.quizGameGenerator generateAnswer4] forState: UIControlStateNormal];
+   //[self.answerButtomD setTitle: [self.quizGameGenerator generateAnswer4] forState: UIControlStateNormal];
+   // [self checkRightAnswer];
+    self.questionCount++;
+    if( [self.answerLabelD.text  isEqualToString: self.rightAnswerLabel.text ] ) {
+        self.scoreCount++;
+        _rightAnswerLabel.hidden = NO;
+        self.rightAnswerLabel.text = [self.quizGameGenerator generateRightAnswer];
+        [self.rightAnswerLabel setBackgroundColor:[UIColor greenColor]];
+        
+    } else {
+        _rightAnswerLabel.hidden = NO;
+        self.rightAnswerLabel.text = [NSString stringWithFormat:@"Wrong answer!"];
+        [self.rightAnswerLabel setBackgroundColor:[UIColor redColor]];
+    }
+
+}
+- (IBAction)resetGameButtom:(id)sender {
+    self.scoreCount = 0;
+    self.questionCount = 0;
+    self.quizGameGenerator = nil;
+    self.questionTextField.text = nil;
+    self.answerLabelA.text = nil;
+    self.answerLabelB.text = nil;
+    self.answerLabelC.text = nil;
+    self.answerLabelD.text = nil;
+    self.rightAnswerLabel.text = nil;
+    _rightAnswerLabel.hidden = YES;
+    [self.startGameButtom  setTitle:@"Start!" forState:UIControlStateNormal];
+    _startGameButtom.hidden = NO;
+    _resetGameButtom.hidden = YES;
+    [_answerButtomA  setEnabled:YES];
+    [_answerButtomB  setEnabled:YES];
+    [_answerButtomC  setEnabled:YES];
+    [_answerButtomD  setEnabled:YES];
+    //[self updateUI];
 }
 
 @end

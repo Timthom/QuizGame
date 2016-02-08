@@ -27,7 +27,7 @@
 @property(nonatomic) NSMutableArray *allQuestions;
 @property(nonatomic) NSString *randomElement;
 @property(nonatomic) NSUInteger idRandom;
-//@property(nonatomic) NSUInteger idNewRandom;
+@property(nonatomic) NSUInteger idNewRandom;
 
 
 
@@ -49,7 +49,7 @@
         
         self.question4 = [[NSArray alloc] initWithObjects: @"Who painted The Water Lily Pool?", @"Picasso", @"Claude Monet", @"Van Gough", @"Rembrant", @"Claude Monet", nil];
         
-        self.question5 = [[NSArray alloc] initWithObjects: @"A couple celebrating their crystal wedding anniversary have been married for how many years?", @"25", @"15", @"10", @"35", @" 15", nil];
+        self.question5 = [[NSArray alloc] initWithObjects: @"A couple celebrating their crystal wedding anniversary have been married for how many years?", @"25", @"15", @"10", @"35", @"15", nil];
         
         self.question6 = [[NSArray alloc] initWithObjects: @"Who wrote the book Catch-22?", @"Leonard Coen", @"Charles Dickens", @"Franz Kafka", @"Joseph Heller", @"Joseph Heller", nil];
         
@@ -90,22 +90,38 @@
 
 //Variable for random id to allQuestions array
 NSUInteger idRandom;
-//NSUInteger idNewRandom;
-//Generate question
--(NSString*)generateQuestion {
+NSUInteger idNewRandom;
+
+-(NSString*)generateQuestion{
     idRandom = self.allQuestions.count-1;
+    idNewRandom = -1;
+    do{
+        [_allQuestions exchangeObjectAtIndex:idRandom
+                           withObjectAtIndex:arc4random_uniform(idRandom)];
+    } while (idRandom == idNewRandom);
+    idNewRandom = idRandom; //set the random number to old random so you can check it on the next run.
     
+    
+    NSString *question = [[_allQuestions objectAtIndex:idRandom] objectAtIndex:0] ;
+    return [NSString stringWithFormat:@" %@ ", question];
+}
+//Generate question
+/*-(NSString*)generateQuestion {
+    idRandom = self.allQuestions.count-1;
+    idNewRandom = -1;
         while(idRandom) {
-            
+           
                 [_allQuestions exchangeObjectAtIndex:idRandom
                                    withObjectAtIndex:arc4random_uniform(idRandom)];
+                idRandom = idNewRandom;
                 idRandom--;
             }
+   
    
     NSString *question = [[_allQuestions objectAtIndex:idRandom] objectAtIndex:0] ;
     return [NSString stringWithFormat:@" %@ ", question];
     
-}
+}*/
 
 //Generate answer1
 -(NSString*)generateAnswer1 {
