@@ -232,6 +232,7 @@
     [_answerButtomB  setEnabled:YES];
     [_answerButtomC  setEnabled:YES];
     [_answerButtomD  setEnabled:YES];
+    self.questionTextField.text = [NSString stringWithFormat:@"Hit Start Button! :) "];
     //[self updateUI];
 }
 
