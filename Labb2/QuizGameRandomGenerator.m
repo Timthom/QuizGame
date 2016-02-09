@@ -92,9 +92,12 @@
 NSUInteger idRandom;
 NSUInteger idNewRandom;
 
+
+
 -(NSString*)generateQuestion{
     idRandom = self.allQuestions.count-1;
     idNewRandom = -1;
+
     do{
         [_allQuestions exchangeObjectAtIndex:idRandom
                            withObjectAtIndex:arc4random_uniform(idRandom)];

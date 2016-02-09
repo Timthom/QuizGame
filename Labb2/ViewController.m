@@ -116,8 +116,12 @@
     _rightAnswerLabel.hidden = YES;
    
     [self.startGameButtom  setTitle:@"Next question" forState:UIControlStateNormal];
+    [_answerButtomA  setEnabled:YES];
+    [_answerButtomB  setEnabled:YES];
+    [_answerButtomC  setEnabled:YES];
+    [_answerButtomD  setEnabled:YES];
     
-    
+
     
     NSLog(@"%@", self.questionTextField.text);
     NSLog(@"%@", self.rightAnswerLabel.text);
@@ -141,6 +145,10 @@
         self.rightAnswerLabel.text = [NSString stringWithFormat:@"Wrong answer!"];
         [self.rightAnswerLabel setBackgroundColor:[UIColor redColor]];
     }
+    
+    [_answerButtomB  setEnabled:NO];
+    [_answerButtomC  setEnabled:NO];
+    [_answerButtomD  setEnabled:NO];
 }
 
 - (IBAction)answerButtomB:(id)sender {
@@ -158,7 +166,9 @@
         self.rightAnswerLabel.text = [NSString stringWithFormat:@"Wrong answer!"];
         [self.rightAnswerLabel setBackgroundColor:[UIColor redColor]];
     }
-
+    [_answerButtomA  setEnabled:NO];
+    [_answerButtomC  setEnabled:NO];
+    [_answerButtomD  setEnabled:NO];
     
 }
 
@@ -177,6 +187,9 @@
         self.rightAnswerLabel.text = [NSString stringWithFormat:@"Wrong answer!"];
         [self.rightAnswerLabel setBackgroundColor:[UIColor redColor]];
     }
+    [_answerButtomA  setEnabled:NO];
+    [_answerButtomB  setEnabled:NO];
+    [_answerButtomD  setEnabled:NO];
 
 }
 
@@ -195,6 +208,10 @@
         self.rightAnswerLabel.text = [NSString stringWithFormat:@"Wrong answer!"];
         [self.rightAnswerLabel setBackgroundColor:[UIColor redColor]];
     }
+    [_answerButtomA  setEnabled:NO];
+    [_answerButtomB  setEnabled:NO];
+    [_answerButtomC  setEnabled:NO];
+    
 
 }
 - (IBAction)resetGameButtom:(id)sender {

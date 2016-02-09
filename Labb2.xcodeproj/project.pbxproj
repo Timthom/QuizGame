@@ -15,6 +15,7 @@
 		7F6620811C626F4D00F0C460 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7F66207F1C626F4D00F0C460 /* LaunchScreen.storyboard */; };
 		7F66208D1C637BB300F0C460 /* QuizGameRandomGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F66208C1C637BB300F0C460 /* QuizGameRandomGenerator.m */; };
 		7F6620931C63C52300F0C460 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F6620921C63C52300F0C460 /* Foundation.framework */; };
+		7F6620991C69DC6800F0C460 /* GameplayKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F6620971C69DC4F00F0C460 /* GameplayKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,6 +32,7 @@
 		7F66208B1C637BB300F0C460 /* QuizGameRandomGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuizGameRandomGenerator.h; sourceTree = "<group>"; };
 		7F66208C1C637BB300F0C460 /* QuizGameRandomGenerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuizGameRandomGenerator.m; sourceTree = "<group>"; };
 		7F6620921C63C52300F0C460 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		7F6620971C69DC4F00F0C460 /* GameplayKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameplayKit.framework; path = System/Library/Frameworks/GameplayKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -38,6 +40,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7F6620991C69DC6800F0C460 /* GameplayKit.framework in Frameworks */,
 				7F6620931C63C52300F0C460 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -99,6 +102,7 @@
 		7F6620941C63C52700F0C460 /* Librarys */ = {
 			isa = PBXGroup;
 			children = (
+				7F6620971C69DC4F00F0C460 /* GameplayKit.framework */,
 				7F6620921C63C52300F0C460 /* Foundation.framework */,
 			);
 			name = Librarys;

@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
+#import <GamePlayKit/GamePlayKit.h>
+@import GameplayKit;
 
 @interface QuizGameRandomGenerator : NSObject
 @property(nonatomic) NSString* generateQuestion;
