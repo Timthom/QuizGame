@@ -218,21 +218,16 @@
     self.scoreCount = 0;
     self.questionCount = 0;
     self.quizGameGenerator = nil;
-    self.questionTextField.text = nil;
-    self.answerLabelA.text = nil;
-    self.answerLabelB.text = nil;
-    self.answerLabelC.text = nil;
-    self.answerLabelD.text = nil;
+    self.answerLabelA.text =   [NSString stringWithFormat:@":)"];
+    self.answerLabelB.text =  [NSString stringWithFormat:@":)"];
+    self.answerLabelC.text =  [NSString stringWithFormat:@":)"];
+    self.answerLabelD.text =  [NSString stringWithFormat:@":)"];
     self.rightAnswerLabel.text = nil;
     _rightAnswerLabel.hidden = YES;
     [self.startGameButtom  setTitle:@"Start!" forState:UIControlStateNormal];
     _startGameButtom.hidden = NO;
     _resetGameButtom.hidden = YES;
-    [_answerButtomA  setEnabled:YES];
-    [_answerButtomB  setEnabled:YES];
-    [_answerButtomC  setEnabled:YES];
-    [_answerButtomD  setEnabled:YES];
-    self.questionTextField.text = [NSString stringWithFormat:@"Hit Start Button! :) "];
+    self.questionTextField.text = [NSString stringWithFormat:@"Hit Start Button! :)"];
     //[self updateUI];
 }
 

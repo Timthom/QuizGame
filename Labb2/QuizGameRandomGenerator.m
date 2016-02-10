@@ -31,7 +31,6 @@
 
 
 
-
 @end
 
 @implementation QuizGameRandomGenerator
@@ -82,10 +81,16 @@
 
 
 /*-(NSString*)randomElement:(NSArray*)allQuestions {
+    NSUInteger idRandom = self.allQuestions.count-1;
+   // return allQuestions[arc4random() %allQuestions.count];
+ // Shuffled distribution
+ GKRandomDistribution *question = [GKShuffledDistribution IdRandom];
     
-    return allQuestions[arc4random() %allQuestions.count];
-}
-*/
+    NSString *question = [[_allQuestions objectAtIndex:idRandom] objectAtIndex:0] ;
+    return [NSString stringWithFormat:@" %@ ", question];
+ //for (int i = 0; i < 100; i++) { NSLog(@"%d", shuffled.nextInt()); }
+}*/
+
 
 
 //Variable for random id to allQuestions array
@@ -94,19 +99,23 @@ NSUInteger idNewRandom;
 
 
 
+
 -(NSString*)generateQuestion{
-    idRandom = self.allQuestions.count-1;
-    idNewRandom = -1;
+   idRandom = self.allQuestions.count-1;
+   idNewRandom = -1;
+    
 
     do{
         [_allQuestions exchangeObjectAtIndex:idRandom
                            withObjectAtIndex:arc4random_uniform(idRandom)];
     } while (idRandom == idNewRandom);
-    idNewRandom = idRandom; //set the random number to old random so you can check it on the next run.
+    idNewRandom = idRandom; //set the random number to old random so you can check it on the next run.*/
     
-    
-    NSString *question = [[_allQuestions objectAtIndex:idRandom] objectAtIndex:0] ;
-    return [NSString stringWithFormat:@" %@ ", question];
+            NSLog(@" idNewRandom %d and idRandom has %d",idNewRandom,  idRandom);
+   
+     NSString *question = [[_allQuestions objectAtIndex:idRandom] objectAtIndex:0];
+        return [NSString stringWithFormat:@" %@ ", question];
+
 }
 //Generate question
 /*-(NSString*)generateQuestion {
@@ -120,7 +129,7 @@ NSUInteger idNewRandom;
                 idRandom--;
             }
    
-   
+    NSLog(@" idNewRandom %d and idRandom has %d",idNewRandom,  idRandom);
     NSString *question = [[_allQuestions objectAtIndex:idRandom] objectAtIndex:0] ;
     return [NSString stringWithFormat:@" %@ ", question];
     
